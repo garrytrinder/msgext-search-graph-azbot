@@ -19,8 +19,8 @@
         "full": "${{APP_DISPLAY_NAME}}"
     },
     "description": {
-        "short": "short description of msgext-search-graph-azbot",
-        "full": "full description of msgext-search-graph-azbot"
+        "short": "Search products",
+        "full": "Search for a product in the Product support catalog"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
@@ -34,7 +34,7 @@
                         "compose",
                         "commandBox"
                     ],
-                    "description": "Test command to run query",
+                    "description": "Enter the name of a product",
                     "title": "Search",
                     "type": "query",
                     "parameters": [
