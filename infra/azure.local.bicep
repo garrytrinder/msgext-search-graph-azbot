@@ -14,6 +14,7 @@ param botAadAppClientSecret string
 param botDisplayName string
 
 param botAppDomain string
+param oauthConnectionName string
 
 // Register your web service as a bot with the Bot Framework
 module azureBotRegistration './botRegistration/azurebot.bicep' = {
@@ -24,5 +25,6 @@ module azureBotRegistration './botRegistration/azurebot.bicep' = {
     botAppDomain: botAppDomain
     botDisplayName: botDisplayName
     botAddAppClientSecret: botAadAppClientSecret
+    oauthConnectionName: oauthConnectionName
   }
 }

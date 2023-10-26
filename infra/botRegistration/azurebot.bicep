@@ -10,6 +10,7 @@ param botServiceName string = resourceBaseName
 param botServiceSku string = 'F0'
 param botAadAppClientId string
 param botAppDomain string
+param oauthConnectionName string
 
 @secure()
 param botAddAppClientSecret string
@@ -41,7 +42,7 @@ resource botServiceMsTeamsChannel 'Microsoft.BotService/botServices/channels@202
 
 resource botServicesMicrosoftGraphConnection 'Microsoft.BotService/botServices/connections@2022-09-15' = {
   parent: botService
-  name: 'MicrosoftGraph'
+  name: oauthConnectionName
   location: 'global'
   properties: {
     serviceProviderDisplayName: 'Azure Active Directory v2'

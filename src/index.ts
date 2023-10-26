@@ -33,7 +33,7 @@ const adapter = new CloudAdapter(botFrameworkAuthentication);
 
 const memoryStorage = new MemoryStorage();
 
-const tokenExchangeMiddleware = new TeamsSSOTokenExchangeMiddleware(memoryStorage, "MicrosoftGraph");
+const tokenExchangeMiddleware = new TeamsSSOTokenExchangeMiddleware(memoryStorage, config.oauthConnectionName);
 adapter.use(tokenExchangeMiddleware);
 
 // Catch-all for errors.

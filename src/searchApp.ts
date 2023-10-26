@@ -21,7 +21,7 @@ const listFields = [
 ];
 
 export class SearchApp extends TeamsActivityHandler {
-  constructor() {
+constructor() {
     super();
   }
 
@@ -31,10 +31,10 @@ export class SearchApp extends TeamsActivityHandler {
   ): Promise<MessagingExtensionResponse> {
     const magicCode = query.state && Number.isInteger(Number(query.state)) ? query.state : '';
     const userTokenClient = context.turnState.get((context.adapter as CloudAdapter).UserTokenClientKey);
-    const tokenResponse = await userTokenClient.getUserToken(context.activity.from.id, "MicrosoftGraph", context.activity.channelId, magicCode);
+    const tokenResponse = await userTokenClient.getUserToken(context.activity.from.id, config.oauthConnectionName, context.activity.channelId, magicCode);
 
     if (!tokenResponse || !tokenResponse.token) {
-      const { signInLink } = await userTokenClient.getSignInResource("MicrosoftGraph", context.activity);
+      const { signInLink } = await userTokenClient.getSignInResource(config.oauthConnectionName, context.activity);
 
       return {
         composeExtension: {
