@@ -21,7 +21,7 @@ const listFields = [
 ];
 
 export class SearchApp extends TeamsActivityHandler {
-constructor() {
+  constructor() {
     super();
   }
 
