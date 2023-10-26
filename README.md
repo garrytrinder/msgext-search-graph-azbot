@@ -28,6 +28,7 @@ The message extension can be used across Microsoft 365:
 ```env
 TEAMSFX_ENV=local
 
+APP_DISPLAY_NAME=Product support
 OAUTH_CONNECTION_NAME=MicrosoftGraph
 
 BOT_ID=

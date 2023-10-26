@@ -15,8 +15,8 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "msgext-search-graph-azbot",
-        "full": "msgext-search-graph-azbot"
+        "short": "${{APP_DISPLAY_NAME}}",
+        "full": "${{APP_DISPLAY_NAME}}"
     },
     "description": {
         "short": "short description of msgext-search-graph-azbot",
