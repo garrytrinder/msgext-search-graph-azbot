@@ -7,7 +7,6 @@ import {
   CloudAdapter,
   AttachmentLayoutTypes,
   CardImage,
-  InvokeResponse,
 } from "botbuilder";
 import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
 import config from "./config";
@@ -24,11 +23,6 @@ const listFields = [
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
-  }
-
-  public async onInvokeActivity(context: TurnContext): Promise<InvokeResponse<any>> {
-    console.log('onInvoke, ' + context.activity.name);
-    return await super.onInvokeActivity(context);
   }
 
   public async handleTeamsMessagingExtensionQuery(
@@ -61,7 +55,6 @@ export class SearchApp extends TeamsActivityHandler {
     const graphClient = Client.init({ authProvider: (done) => { done(null, tokenResponse.token); } });
 
     const { sharepointIds } = await graphClient.api(`/sites/${config.spoHostname}:/${config.spoSiteUrl}`).select("sharepointIds").get();
-    const { value: lists } = await graphClient.api(`/sites/${sharepointIds.siteId}/lists`).select("id").get();
     const { value: items } = await graphClient.api(`/sites/${sharepointIds.siteId}/lists/Products/items?expand=fields&select=${listFields.join(",")}&$filter=startswith(fields/Title,'${query.parameters[0].value}')`).get();
     const { value: drives } = await graphClient.api(`sites/${sharepointIds.siteId}/drives`).select(["id", "name"]).get();
     const drive = drives.find(drive => drive.name === "Product Imagery");
